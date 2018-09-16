@@ -1,0 +1,8 @@
+author: Bruno Fernandes
+author_url: https://twitter.com/bfernandesbfs
+github_url: https://github.com/bfernandesbfs/CoordinatorKit
+root_url: https://bfernandesbfs.github.io/CoordinatorKit/
+module: CoordinatorKit
+output: docs
+theme: fullwidth
+xcodebuild_arguments: [-workspace, 'CoordinatorKit.xcworkspace', -scheme, 'CoordinatorKit-iOS']
