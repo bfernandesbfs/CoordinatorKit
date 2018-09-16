@@ -26,7 +26,7 @@ class CoordinatorSpec: QuickSpec {
                 expect(coordinator.childCoordinators.isEmpty).to(beTrue())
             }
 
-            it("push new coordinator") {
+            it("show new coordinator") {
 
                 var isCompletion: Bool = false
                 let completion: () -> Void = {
@@ -40,7 +40,7 @@ class CoordinatorSpec: QuickSpec {
                 expect(isCompletion).to(beTrue())
             }
 
-            it("pop new coordinator") {
+            it("finish new coordinator") {
 
                 var isCompletion: Bool = false
                 let completion: () -> Void = {
