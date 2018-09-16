@@ -19,6 +19,9 @@
 		154C8032214EDDCB005C194F /* MockCoordinatorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8031214EDDCB005C194F /* MockCoordinatorObjects.swift */; };
 		154C8033214EDDCB005C194F /* MockCoordinatorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8031214EDDCB005C194F /* MockCoordinatorObjects.swift */; };
 		154C8034214EDDCB005C194F /* MockCoordinatorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8031214EDDCB005C194F /* MockCoordinatorObjects.swift */; };
+		154C8036214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */; };
+		154C8037214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */; };
+		154C8038214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */; };
 		156D708F214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
 		156D7090214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
 		156D7091214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
@@ -172,6 +175,7 @@
 		154C8026214EC32D005C194F /* RouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMock.swift; sourceTree = "<group>"; };
 		154C802C214EDD27005C194F /* CoordinatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSpec.swift; sourceTree = "<group>"; };
 		154C8031214EDDCB005C194F /* MockCoordinatorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorObjects.swift; sourceTree = "<group>"; };
+		154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorRouterSpec.swift; sourceTree = "<group>"; };
 		156D707E214DD91C00F13730 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		156D707F214DD91C00F13730 /* CoordinatorStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorStack.swift; sourceTree = "<group>"; };
 		156D7081214DD91C00F13730 /* Router+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Extension.swift"; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 			children = (
 				154C8031214EDDCB005C194F /* MockCoordinatorObjects.swift */,
 				154C802C214EDD27005C194F /* CoordinatorSpec.swift */,
+				154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -817,6 +822,7 @@
 				154C8023214EC2F0005C194F /* RouterSpec.swift in Sources */,
 				156D70E1214DE33500F13730 /* MockObjects.swift in Sources */,
 				154C802E214EDD2C005C194F /* CoordinatorSpec.swift in Sources */,
+				154C8036214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */,
 				154C8032214EDDCB005C194F /* MockCoordinatorObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,6 +838,7 @@
 				154C8025214EC2F2005C194F /* RouterSpec.swift in Sources */,
 				156D70E3214DE33800F13730 /* MockObjects.swift in Sources */,
 				154C8030214EDD2D005C194F /* CoordinatorSpec.swift in Sources */,
+				154C8038214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */,
 				154C8034214EDDCB005C194F /* MockCoordinatorObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,6 +854,7 @@
 				154C8024214EC2F1005C194F /* RouterSpec.swift in Sources */,
 				156D70E2214DE33700F13730 /* MockObjects.swift in Sources */,
 				154C802F214EDD2C005C194F /* CoordinatorSpec.swift in Sources */,
+				154C8037214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */,
 				154C8033214EDDCB005C194F /* MockCoordinatorObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
