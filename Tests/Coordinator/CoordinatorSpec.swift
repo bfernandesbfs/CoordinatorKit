@@ -26,7 +26,7 @@ class CoordinatorSpec: QuickSpec {
                 expect(coordinator.childCoordinators.isEmpty).to(beTrue())
             }
 
-            it("show new coordinator") {
+            it("push new coordinator") {
 
                 var isCompletion: Bool = false
                 let completion: () -> Void = {
@@ -34,7 +34,7 @@ class CoordinatorSpec: QuickSpec {
                 }
                 let newCoordinator = TestCoordiantor()
 
-                coordinator.show(newCoordinator, animated: false, completion: completion)
+                coordinator.push(newCoordinator, animated: false, completion: completion)
 
                 expect(coordinator.childCoordinators.count) == 1
                 expect(isCompletion).to(beTrue())
@@ -48,7 +48,7 @@ class CoordinatorSpec: QuickSpec {
                 }
                 let newCoordinator = TestCoordiantor()
 
-                coordinator.show(newCoordinator, animated: false, completion: nil)
+                coordinator.push(newCoordinator, animated: false, completion: nil)
 
                 newCoordinator.finish(animated: false, completion: completion)
 

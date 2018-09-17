@@ -22,12 +22,12 @@ open class Router: NSObject, RouterType {
         return rootViewController != nil
     }
 
-    public var isModal: Bool
+    public var isModalPresent: Bool
 
     public init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
         self.completions = [:]
-        self.isModal = false
+        self.isModalPresent = false
         super.init()
     }
 

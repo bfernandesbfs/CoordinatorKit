@@ -24,19 +24,16 @@ extension CoordinatorStack {
 
 extension CoordinatorStack where Self: Coordinator {
 
-    public func modal(_ coordinator: Coordinator, animated: Bool) {
-        add(coordinator: coordinator)
-        coordinator.start()
 
-        router?.isModal = true
+    public func show(_ coordinator: Coordinator, animated: Bool) {
+        presentCoordinator(coordinator)
+        router?.isModalPresent = true
         router?.present(coordinator, animated: animated)
     }
 
-    public func show(_ coordinator: Coordinator, animated: Bool, completion: (()-> Void)?) {
-        add(coordinator: coordinator)
-        coordinator.start()
-
-        router?.isModal = false
+    public func push(_ coordinator: Coordinator, animated: Bool, completion: (()-> Void)?) {
+        presentCoordinator(coordinator)
+        router?.isModalPresent = false
         router?.push(coordinator, animated: animated, completion: completion)
 
         if let completion = completion {
@@ -51,12 +48,12 @@ extension CoordinatorStack where Self: Coordinator {
 
         remove(coordinator: parent)
 
-        if let router = parent.router, router.isModal {
-            parent.router?.isModal = false
+        if let router = parent.router, router.isModalPresent {
+            parent.router?.isModalPresent = false
             parent.router?.dismissModule(animated: animated, completion: completion)
         }
         else {
-            parent.router?.isModal = true
+            parent.router?.isModalPresent = true
             parent.router?.popModule(animated: animated)
 
             if let completion = completion {
@@ -66,6 +63,11 @@ extension CoordinatorStack where Self: Coordinator {
     }
 
     // MARK: Private Methods
+
+    private func presentCoordinator(_ coordinator: Coordinator) {
+        add(coordinator: coordinator)
+        coordinator.start()
+    }
 
     private func add(coordinator: Coordinator) {
         print("Add child \(coordinator) in \(self)")

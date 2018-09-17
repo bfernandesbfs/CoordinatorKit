@@ -8,9 +8,9 @@
 
 public protocol CoordinatorStack: class, CoordinatorRouter {
 
-    func modal(_ coordinator: Coordinator, animated: Bool)
+    func show(_ coordinator: Coordinator, animated: Bool)
     
-    func show(_ coordinator: Coordinator, animated: Bool, completion: (()-> Void)?)
+    func push(_ coordinator: Coordinator, animated: Bool, completion: (()-> Void)?)
 
     func finish(animated: Bool, completion: (()-> Void)?)
 }

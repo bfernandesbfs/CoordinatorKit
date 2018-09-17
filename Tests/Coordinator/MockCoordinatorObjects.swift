@@ -9,12 +9,18 @@
 import UIKit
 import CoordinatorKit
 
-class TestCoordiantor: Coordinator {
+class TestCoordiantor: Coordinator, TestEventProtocol {
 
     var rootViewController: UIViewController?
 
     func start() {
         rootViewController = FirstViewController()
+    }
+
+    func handle(action: TestAction) {
+
+        push(TestCoordiantor(), animated: false, completion: nil)
+
     }
 
 }

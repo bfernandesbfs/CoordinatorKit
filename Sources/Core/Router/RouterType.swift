@@ -14,7 +14,7 @@ public protocol RouterType: class, Presentable {
     
     var rootViewController: UIViewController? { get }
 
-    var isModal: Bool { get set }
+    var isModalPresent: Bool { get set }
 
     func present(_ module: Presentable, animated: Bool)
 
