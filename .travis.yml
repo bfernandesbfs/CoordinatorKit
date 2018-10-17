@@ -23,21 +23,9 @@ env:
     - LANG=en_US.UTF-8
     - WORKSPACE=CoordinatorKit.xcworkspace
     - IOS_FRAMEWORK_SCHEME="CoordinatorKit-iOS"
-    - OSX_FRAMEWORK_SCHEME="CoordinatorKit-macOS"
-    - TVOS_FRAMEWORK_SCHEME="CoordinatorKit-tvOS"
-    - WATCHOS_FRAMEWORK_SCHEME="CoordinatorKit-watchOS"
   matrix:
     - DESTINATION="OS=11.4,name=iPhone X"                   SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
-    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"            SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
-    - DESTINATION="OS=9.0,name=iPhone 6"                    SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=8.1,name=iPhone 5s"                   SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
-    - DESTINATION="arch=x86_64"                             SCHEME="$OSX_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
-    - DESTINATION="OS=11.4,name=Apple TV 4K (at 1080p)"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES"
-    - DESTINATION="OS=10.2,name=Apple TV 1080p"             SCHEME="$TVOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES"
-    - DESTINATION="OS=9.0,name=Apple TV 1080p"              SCHEME="$TVOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES"
-    - DESTINATION="OS=4.3,name=Apple Watch Series 2 - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" RUN_TESTS="NO"
-    - DESTINATION="OS=3.1,name=Apple Watch Series 2 - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" RUN_TESTS="NO"
-    - DESTINATION="OS=2.0,name=Apple Watch - 38mm"          SCHEME="$WATCHOS_FRAMEWORK_SCHEME" RUN_TESTS="NO"
 
 before_script:
   - sh scripts/bootstrap
@@ -63,10 +51,6 @@ script:
 
 jobs:
   include:
-    - stage: Danger
-      script: bundle exec danger
-    - stage: Pod lib lint
-      script: bundle exec pod lib lint --verbose --allow-warnings
     - stage: Deploy Github
       script: skip
       before_deploy:
@@ -75,19 +59,11 @@ jobs:
       deploy:
         - provider: releases
           api_key:
-            secure: 
+            secure: O957kJpnkNO2ZKAhnXa0zMLd0ukc1lHuicFf8VR2IPW2HYCm0+2nZjfSiCo2wj62DydIeHTnc63zGUACHK2NkLTJvMCwElz6DahXywNJGvPgTZcbY8ME8+ZZz/jwS/7yqcf/qvzgyQ/cCefx7fMn7AhLh+3t0y8LPpVQx+Y+69riJP04nDhdqy5vwTM4fCV1vSLUNlTgEiMwoAadYHx4i29kVVppS7XyDo35X59mUMjKgWcdvQpiQWoryUpcP7xq6lM3hXRvuTG7y4drRI8XJOW7MgAuHAeVcpSH+o2VLXnQyJe10Z/HpUxMTgnKfftYmduF9glj5MeE8/zPCzbfWKJtlQrnz0GTwMpHPdE4e6TMMxioNsFAeTLx5eQB8bfgCw6fZeSayDtD4sFKTtq4i4f+37lxlnC7K/Vw1JtdqSfOpuW6k2B7e+FrLSiWjmxPx57Z8koV3PUao0ZnVb3Fxz/5wtQmSdNfDcENgWSwGdNZoOwZJmkAyM4CWeKUiJnadGsb5sYLooKafRBPhMCmaqUhdqJgfpYqolSVqUQDWjPA4PK7BkESYFqZHpmMR4mPd4LnPfyL9Atyu5GRBU/oKfEAII44ZHJjiIjaSbc3vZO0YLli6HkMsDbi3mVamHxezV/KMnCmJRU3mEwm9fG9MD8M5fG70EqFcvCNwQKyXXs=
           file:
             - CoordinatorKit.framework.zip
           skip_cleanup: true
           overwrite: true
           on:
             repo: bfernandesbfs/CoordinatorKit
-            tags: true
-    - stage: Deploy Cocoapods
-      script: skip
-      deploy:
-        - provider: script
-          script: bundle exec pod trunk push
-          skip_cleanup: true
-          on:
             tags: true
