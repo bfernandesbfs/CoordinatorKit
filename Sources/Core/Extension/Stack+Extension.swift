@@ -11,12 +11,12 @@ private var parentKey: UInt8 = 2
 
 extension CoordinatorStack {
 
-    var childCoordinators: [Coordinator] {
+    public var childCoordinators: [Coordinator] {
         get { return AssociatedObject.get(base: self, key: &childKey) { return [] } }
         set { AssociatedObject.set(base: self, key: &childKey, value: newValue) }
     }
 
-    var parent: Coordinator? {
+    public var parent: Coordinator? {
         get { return AssociatedObject.get(base: self, key: &parentKey) }
         set { AssociatedObject.set(base: self, key: &parentKey, value: newValue) }
     }
