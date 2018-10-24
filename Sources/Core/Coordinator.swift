@@ -6,7 +6,7 @@
 //  Copyright © 2018 bfernandesbfs. All rights reserved.
 //
 
-public protocol Coordinator: CoordinatorStack, Responder {
+public protocol Coordinator: CoordinatorStack, CoordinatorRouter, Responder {
 
     func start()
 }

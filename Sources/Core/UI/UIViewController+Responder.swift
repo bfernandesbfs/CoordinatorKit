@@ -21,7 +21,15 @@ public extension UIViewController {
         }
     }
 
-    func perform<EventType: Event>(action: EventType) {
+    public func set(responder: Responder) {
+        self.responder = responder
+    }
+
+    public func set(controller: UIViewController) {
+        self.responder = controller.responder
+    }
+
+    public func perform<EventType: Event>(action: EventType) {
 
         guard let responder = responder else {
             fatalError("\(self) does not have an associated match in chain structure")

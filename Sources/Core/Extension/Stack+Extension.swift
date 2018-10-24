@@ -11,12 +11,12 @@ private var parentKey: UInt8 = 2
 
 extension CoordinatorStack {
 
-    public var childCoordinators: [Coordinator] {
+    var childCoordinators: [Coordinator] {
         get { return AssociatedObject.get(base: self, key: &childKey) { return [] } }
         set { AssociatedObject.set(base: self, key: &childKey, value: newValue) }
     }
 
-    public var parent: Coordinator? {
+    var parent: Coordinator? {
         get { return AssociatedObject.get(base: self, key: &parentKey) }
         set { AssociatedObject.set(base: self, key: &parentKey, value: newValue) }
     }
@@ -24,21 +24,21 @@ extension CoordinatorStack {
 
 extension CoordinatorStack where Self: Coordinator {
 
+    public func present(_ coordinator: Coordinator) {
+        add(coordinator: coordinator)
+        coordinator.start()
+    }
 
     public func show(_ coordinator: Coordinator, animated: Bool) {
-        presentCoordinator(coordinator)
+        present(coordinator)
         router?.isModalPresent = true
         router?.present(coordinator, animated: animated)
     }
 
     public func push(_ coordinator: Coordinator, animated: Bool, completion: (()-> Void)?) {
-        presentCoordinator(coordinator)
+        present(coordinator)
         router?.isModalPresent = false
         router?.push(coordinator, animated: animated, completion: completion)
-
-        if let completion = completion {
-            completion()
-        }
     }
 
     public func finish(animated: Bool, completion: (()-> Void)?) {
@@ -48,14 +48,21 @@ extension CoordinatorStack where Self: Coordinator {
 
         remove(coordinator: parent)
 
-        if let router = parent.router, router.isModalPresent {
-            parent.router?.isModalPresent = false
-            parent.router?.dismissModule(animated: animated, completion: completion)
+        if rootViewController != nil {
+
+            if let router = parent.router, router.isModalPresent {
+                parent.router?.isModalPresent = false
+                parent.router?.dismissModule(animated: animated, completion: completion)
+            }
+            else {
+                parent.router?.popModule(animated: animated)
+
+                if let completion = completion {
+                    completion()
+                }
+            }
         }
         else {
-            parent.router?.isModalPresent = true
-            parent.router?.popModule(animated: animated)
-
             if let completion = completion {
                 completion()
             }
@@ -64,15 +71,9 @@ extension CoordinatorStack where Self: Coordinator {
 
     // MARK: Private Methods
 
-    private func presentCoordinator(_ coordinator: Coordinator) {
-        add(coordinator: coordinator)
-        coordinator.start()
-    }
-
     private func add(coordinator: Coordinator) {
         print("Add child \(coordinator) in \(self)")
 
-        var coordinator = coordinator
         for element in childCoordinators where element === coordinator {
             return
         }

@@ -28,16 +28,11 @@ class CoordinatorSpec: QuickSpec {
 
             it("push new coordinator") {
 
-                var isCompletion: Bool = false
-                let completion: () -> Void = {
-                    isCompletion = true
-                }
                 let newCoordinator = TestCoordiantor()
 
-                coordinator.push(newCoordinator, animated: false, completion: completion)
+                coordinator.push(newCoordinator, animated: false, completion: {})
 
                 expect(coordinator.childCoordinators.count) == 1
-                expect(isCompletion).to(beTrue())
             }
 
             it("finish new coordinator") {
