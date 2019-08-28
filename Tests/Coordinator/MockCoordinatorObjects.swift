@@ -9,7 +9,7 @@
 import UIKit
 import CoordinatorKit
 
-class TestCoordinator: Coordinator, CoordinatorStack, TestEventProtocol {
+class TestCoordinator: Coordinator, TestEventProtocol {
     
     func start() {
         rootViewController = FirstViewController()

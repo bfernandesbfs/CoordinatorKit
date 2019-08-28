@@ -6,4 +6,4 @@
 //  Copyright © 2018 bfernandesbfs. All rights reserved.
 //
 
-public typealias Coordinator = BaseCoordinator & Startable
+public typealias Coordinator = BaseCoordinator & CoordinatorStack & Startable
