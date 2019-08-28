@@ -16,10 +16,10 @@ class CoordinatorSpec: QuickSpec {
 
         describe("CoordinatorSpec") {
 
-            var coordinator: TestCoordiantor!
+            var coordinator: TestCoordinator!
 
             beforeEach {
-                coordinator = TestCoordiantor()
+                coordinator = TestCoordinator()
             }
 
             it("child initialized of empty array") {
@@ -28,7 +28,7 @@ class CoordinatorSpec: QuickSpec {
 
             it("push new coordinator") {
 
-                let newCoordinator = TestCoordiantor()
+                let newCoordinator = TestCoordinator()
 
                 coordinator.push(newCoordinator, animated: false, completion: {})
 
@@ -41,7 +41,7 @@ class CoordinatorSpec: QuickSpec {
                 let completion: () -> Void = {
                     isCompletion = true
                 }
-                let newCoordinator = TestCoordiantor()
+                let newCoordinator = TestCoordinator()
 
                 coordinator.push(newCoordinator, animated: false, completion: nil)
 

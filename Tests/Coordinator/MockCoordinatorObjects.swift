@@ -9,7 +9,7 @@
 import UIKit
 import CoordinatorKit
 
-class TestCoordiantor: Coordinator, CoordinatorStack, TestEventProtocol {
+class TestCoordinator: Coordinator, CoordinatorStack, TestEventProtocol {
     
     func start() {
         rootViewController = FirstViewController()
@@ -17,7 +17,7 @@ class TestCoordiantor: Coordinator, CoordinatorStack, TestEventProtocol {
 
     func handle(action: TestAction) {
 
-        push(TestCoordiantor(), animated: false, completion: nil)
+        push(TestCoordinator(), animated: false, completion: nil)
 
     }
 
