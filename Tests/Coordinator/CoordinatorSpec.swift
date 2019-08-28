@@ -23,7 +23,7 @@ class CoordinatorSpec: QuickSpec {
             }
 
             it("child initialized of empty array") {
-                expect(coordinator.childCoordinators.isEmpty).to(beTrue())
+                expect(coordinator.children.isEmpty).to(beTrue())
             }
 
             it("push new coordinator") {
@@ -32,7 +32,7 @@ class CoordinatorSpec: QuickSpec {
 
                 coordinator.push(newCoordinator, animated: false, completion: {})
 
-                expect(coordinator.childCoordinators.count) == 1
+                expect(coordinator.children.count) == 1
             }
 
             it("finish new coordinator") {
@@ -47,7 +47,7 @@ class CoordinatorSpec: QuickSpec {
 
                 newCoordinator.finish(animated: false, completion: completion)
 
-                expect(coordinator.childCoordinators.isEmpty).to(beTrue())
+                expect(coordinator.children.isEmpty).to(beTrue())
                 expect(isCompletion).to(beTrue())
             }
         }

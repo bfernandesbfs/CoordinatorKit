@@ -22,10 +22,6 @@
 		154C8036214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */; };
 		154C8037214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */; };
 		154C8038214EF0E8005C194F /* CoordinatorRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */; };
-		156D708F214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
-		156D7090214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
-		156D7091214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
-		156D7092214DD91D00F13730 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707E214DD91C00F13730 /* AssociatedObject.swift */; };
 		156D7093214DD91D00F13730 /* CoordinatorStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707F214DD91C00F13730 /* CoordinatorStack.swift */; };
 		156D7094214DD91D00F13730 /* CoordinatorStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707F214DD91C00F13730 /* CoordinatorStack.swift */; };
 		156D7095214DD91D00F13730 /* CoordinatorStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D707F214DD91C00F13730 /* CoordinatorStack.swift */; };
@@ -34,10 +30,6 @@
 		156D7098214DD91D00F13730 /* Router+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7081214DD91C00F13730 /* Router+Extension.swift */; };
 		156D7099214DD91D00F13730 /* Router+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7081214DD91C00F13730 /* Router+Extension.swift */; };
 		156D709A214DD91D00F13730 /* Router+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7081214DD91C00F13730 /* Router+Extension.swift */; };
-		156D709B214DD91D00F13730 /* Responder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7082214DD91C00F13730 /* Responder+Extension.swift */; };
-		156D709C214DD91D00F13730 /* Responder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7082214DD91C00F13730 /* Responder+Extension.swift */; };
-		156D709D214DD91D00F13730 /* Responder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7082214DD91C00F13730 /* Responder+Extension.swift */; };
-		156D709E214DD91D00F13730 /* Responder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7082214DD91C00F13730 /* Responder+Extension.swift */; };
 		156D709F214DD91D00F13730 /* Stack+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7083214DD91C00F13730 /* Stack+Extension.swift */; };
 		156D70A0214DD91D00F13730 /* Stack+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7083214DD91C00F13730 /* Stack+Extension.swift */; };
 		156D70A1214DD91D00F13730 /* Stack+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7083214DD91C00F13730 /* Stack+Extension.swift */; };
@@ -86,6 +78,11 @@
 		156D70E1214DE33500F13730 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D70DC214DE2E900F13730 /* MockObjects.swift */; };
 		156D70E2214DE33700F13730 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D70DC214DE2E900F13730 /* MockObjects.swift */; };
 		156D70E3214DE33800F13730 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D70DC214DE2E900F13730 /* MockObjects.swift */; };
+		161840BE2316F594005E7E11 /* CoordinatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161840BD2316F594005E7E11 /* CoordinatorNode.swift */; };
+		161840C02316F5AB005E7E11 /* Startable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161840BF2316F5AB005E7E11 /* Startable.swift */; };
+		161840C32316F9A9005E7E11 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161840C22316F9A9005E7E11 /* BaseCoordinator.swift */; };
+		161840C52316F9F0005E7E11 /* BaseCoordinator+CoordinatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161840C42316F9F0005E7E11 /* BaseCoordinator+CoordinatorNode.swift */; };
+		161840C72316FAF4005E7E11 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161840C62316FAF4005E7E11 /* AssociatedObject.swift */; };
 		3549BB501DA38A2000C63030 /* CoordinatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* CoordinatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3549BB511DA38A2000C63030 /* CoordinatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* CoordinatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3549BB521DA38A2100C63030 /* CoordinatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* CoordinatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -176,10 +173,8 @@
 		154C802C214EDD27005C194F /* CoordinatorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSpec.swift; sourceTree = "<group>"; };
 		154C8031214EDDCB005C194F /* MockCoordinatorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorObjects.swift; sourceTree = "<group>"; };
 		154C8035214EF0E8005C194F /* CoordinatorRouterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorRouterSpec.swift; sourceTree = "<group>"; };
-		156D707E214DD91C00F13730 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		156D707F214DD91C00F13730 /* CoordinatorStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorStack.swift; sourceTree = "<group>"; };
 		156D7081214DD91C00F13730 /* Router+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Extension.swift"; sourceTree = "<group>"; };
-		156D7082214DD91C00F13730 /* Responder+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Responder+Extension.swift"; sourceTree = "<group>"; };
 		156D7083214DD91C00F13730 /* Stack+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stack+Extension.swift"; sourceTree = "<group>"; };
 		156D7085214DD91C00F13730 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		156D7086214DD91C00F13730 /* Responder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Responder.swift; sourceTree = "<group>"; };
@@ -193,6 +188,11 @@
 		156D70C5214DD97400F13730 /* EventSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
 		156D70D4214DE24900F13730 /* ChainSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainSpec.swift; sourceTree = "<group>"; };
 		156D70DC214DE2E900F13730 /* MockObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.swift; sourceTree = "<group>"; };
+		161840BD2316F594005E7E11 /* CoordinatorNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNode.swift; sourceTree = "<group>"; };
+		161840BF2316F5AB005E7E11 /* Startable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
+		161840C22316F9A9005E7E11 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		161840C42316F9F0005E7E11 /* BaseCoordinator+CoordinatorNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseCoordinator+CoordinatorNode.swift"; sourceTree = "<group>"; };
+		161840C62316FAF4005E7E11 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		3549BB171DA3890B00C63030 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3549BB181DA3890B00C63030 /* CoordinatorKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinatorKit.h; sourceTree = "<group>"; };
 		3549BB211DA389CD00C63030 /* CoordinatorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoordinatorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,19 +294,10 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		156D707D214DD91C00F13730 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				156D707E214DD91C00F13730 /* AssociatedObject.swift */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		156D7080214DD91C00F13730 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				156D7081214DD91C00F13730 /* Router+Extension.swift */,
-				156D7082214DD91C00F13730 /* Responder+Extension.swift */,
 				156D7083214DD91C00F13730 /* Stack+Extension.swift */,
 			);
 			path = Extension;
@@ -348,6 +339,24 @@
 				156D70D4214DE24900F13730 /* ChainSpec.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		161840C12316F99A005E7E11 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				161840C22316F9A9005E7E11 /* BaseCoordinator.swift */,
+				161840C42316F9F0005E7E11 /* BaseCoordinator+CoordinatorNode.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		161840C82316FB2A005E7E11 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				161840BF2316F5AB005E7E11 /* Startable.swift */,
+				161840C62316FAF4005E7E11 /* AssociatedObject.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		3549BAFB1DA387DB00C63030 = {
@@ -430,11 +439,13 @@
 			isa = PBXGroup;
 			children = (
 				156D708C214DD91D00F13730 /* Coordinator.swift */,
+				161840BD2316F594005E7E11 /* CoordinatorNode.swift */,
 				156D7087214DD91D00F13730 /* CoordinatorRouter.swift */,
 				156D707F214DD91C00F13730 /* CoordinatorStack.swift */,
+				161840C12316F99A005E7E11 /* Base */,
+				161840C82316FB2A005E7E11 /* Helper */,
 				156D7084214DD91C00F13730 /* Event */,
 				156D7080214DD91C00F13730 /* Extension */,
-				156D707D214DD91C00F13730 /* Helper */,
 				156D7088214DD91D00F13730 /* Router */,
 				156D708D214DD91D00F13730 /* UI */,
 			);
@@ -735,15 +746,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156D708F214DD91D00F13730 /* AssociatedObject.swift in Sources */,
 				156D7093214DD91D00F13730 /* CoordinatorStack.swift in Sources */,
 				156D70BB214DD91D00F13730 /* Coordinator.swift in Sources */,
 				156D70B3214DD91D00F13730 /* RouterType.swift in Sources */,
+				161840C52316F9F0005E7E11 /* BaseCoordinator+CoordinatorNode.swift in Sources */,
 				156D709F214DD91D00F13730 /* Stack+Extension.swift in Sources */,
 				156D70B7214DD91D00F13730 /* Router.swift in Sources */,
+				161840BE2316F594005E7E11 /* CoordinatorNode.swift in Sources */,
 				156D70BF214DD91D00F13730 /* UIViewController+Responder.swift in Sources */,
+				161840C72316FAF4005E7E11 /* AssociatedObject.swift in Sources */,
 				156D70AF214DD91D00F13730 /* Presentable.swift in Sources */,
-				156D709B214DD91D00F13730 /* Responder+Extension.swift in Sources */,
+				161840C02316F5AB005E7E11 /* Startable.swift in Sources */,
+				161840C32316F9A9005E7E11 /* BaseCoordinator.swift in Sources */,
 				156D70A7214DD91D00F13730 /* Responder.swift in Sources */,
 				156D7097214DD91D00F13730 /* Router+Extension.swift in Sources */,
 				156D70A3214DD91D00F13730 /* Event.swift in Sources */,
@@ -755,7 +769,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156D7092214DD91D00F13730 /* AssociatedObject.swift in Sources */,
 				156D7096214DD91D00F13730 /* CoordinatorStack.swift in Sources */,
 				156D70BE214DD91D00F13730 /* Coordinator.swift in Sources */,
 				156D70B6214DD91D00F13730 /* RouterType.swift in Sources */,
@@ -763,7 +776,6 @@
 				156D70BA214DD91D00F13730 /* Router.swift in Sources */,
 				156D70C2214DD91D00F13730 /* UIViewController+Responder.swift in Sources */,
 				156D70B2214DD91D00F13730 /* Presentable.swift in Sources */,
-				156D709E214DD91D00F13730 /* Responder+Extension.swift in Sources */,
 				156D70AA214DD91D00F13730 /* Responder.swift in Sources */,
 				156D709A214DD91D00F13730 /* Router+Extension.swift in Sources */,
 				156D70A6214DD91D00F13730 /* Event.swift in Sources */,
@@ -775,7 +787,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156D7090214DD91D00F13730 /* AssociatedObject.swift in Sources */,
 				156D7094214DD91D00F13730 /* CoordinatorStack.swift in Sources */,
 				156D70BC214DD91D00F13730 /* Coordinator.swift in Sources */,
 				156D70B4214DD91D00F13730 /* RouterType.swift in Sources */,
@@ -783,7 +794,6 @@
 				156D70B8214DD91D00F13730 /* Router.swift in Sources */,
 				156D70C0214DD91D00F13730 /* UIViewController+Responder.swift in Sources */,
 				156D70B0214DD91D00F13730 /* Presentable.swift in Sources */,
-				156D709C214DD91D00F13730 /* Responder+Extension.swift in Sources */,
 				156D70A8214DD91D00F13730 /* Responder.swift in Sources */,
 				156D7098214DD91D00F13730 /* Router+Extension.swift in Sources */,
 				156D70A4214DD91D00F13730 /* Event.swift in Sources */,
@@ -795,7 +805,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156D7091214DD91D00F13730 /* AssociatedObject.swift in Sources */,
 				156D7095214DD91D00F13730 /* CoordinatorStack.swift in Sources */,
 				156D70BD214DD91D00F13730 /* Coordinator.swift in Sources */,
 				156D70B5214DD91D00F13730 /* RouterType.swift in Sources */,
@@ -803,7 +812,6 @@
 				156D70B9214DD91D00F13730 /* Router.swift in Sources */,
 				156D70C1214DD91D00F13730 /* UIViewController+Responder.swift in Sources */,
 				156D70B1214DD91D00F13730 /* Presentable.swift in Sources */,
-				156D709D214DD91D00F13730 /* Responder+Extension.swift in Sources */,
 				156D70A9214DD91D00F13730 /* Responder.swift in Sources */,
 				156D7099214DD91D00F13730 /* Router+Extension.swift in Sources */,
 				156D70A5214DD91D00F13730 /* Event.swift in Sources */,

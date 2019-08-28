@@ -9,10 +9,8 @@
 import UIKit
 import CoordinatorKit
 
-class TestCoordiantor: Coordinator, TestEventProtocol {
-
-    var rootViewController: UIViewController?
-
+class TestCoordiantor: Coordinator, CoordinatorStack, TestEventProtocol {
+    
     func start() {
         rootViewController = FirstViewController()
     }
