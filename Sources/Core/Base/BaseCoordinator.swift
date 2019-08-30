@@ -18,6 +18,14 @@ open class BaseCoordinator: CoordinatorRouter, Responder {
     
     public var nextResponder: Responder?
     
+    private var hasRootViewController: Bool {
+        return rootViewController != nil
+    }
+    
+    private var isModalViewController: Bool {
+        return parent?.router?.isModalPresent ?? false
+    }
+    
     public init() {
         rootViewController = nil
         router = nil
@@ -27,19 +35,26 @@ open class BaseCoordinator: CoordinatorRouter, Responder {
     }
     
     public func dismissModule(animated: Bool, completion: (() -> Void)?) {
-        if rootViewController != nil {
-            if let router = parent?.router, router.isModalPresent {
-                parent?.router?.isModalPresent = false
-                parent?.router?.dismissModule(animated: animated, completion: completion)
-            } else {
-                parent?.router?.popModule(animated: animated)
-                
-                if let completion = completion {
-                    completion()
-                }
-            }
-        } else if let completion = completion {
-            completion()
+        guard !isModalViewController else {
+            dismissModalModule(animated: animated, completion: completion)
+            return
+        }
+        
+        defer { completion?() }
+        
+        popModule(animated: animated)
+    }
+    
+    private func popModule(animated: Bool) {
+        if hasRootViewController {
+            parent?.router?.popModule(animated: animated)
+        }
+    }
+    
+    private func dismissModalModule(animated: Bool, completion: (() -> Void)?) {
+        if hasRootViewController {
+            parent?.router?.isModalPresent = false
+            parent?.router?.dismissModule(animated: animated, completion: completion)
         }
     }
 }
