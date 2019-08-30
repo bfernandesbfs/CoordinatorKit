@@ -26,14 +26,6 @@ open class BaseCoordinator: CoordinatorRouter, Responder {
         nextResponder = nil
     }
     
-    internal func add(parent: BaseCoordinator) {
-        storedParent = parent
-    }
-    
-    internal func remove(childAt index: Int) {
-        storedChildren.remove(at: index)
-    }
-    
     public func dismissModule(animated: Bool, completion: (() -> Void)?) {
         if rootViewController != nil {
             if let router = parent?.router, router.isModalPresent {

@@ -26,7 +26,7 @@ extension BaseCoordinator: CoordinatorNode {
             return
         }
         storedChildren.append(child)
-        child.add(parent: self)
+        child.storedParent = self
         child.nextResponder = self
         if child.router == nil {
             child.router = router
@@ -38,7 +38,7 @@ extension BaseCoordinator: CoordinatorNode {
         
         if !child.children.isEmpty {
             for (index, element) in child.children.enumerated() where element === self {
-                child.remove(childAt: index)
+                child.storedChildren.remove(at: index)
                 storedParent = nil
                 break
             }
