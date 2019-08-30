@@ -6,7 +6,4 @@
 //  Copyright © 2018 bfernandesbfs. All rights reserved.
 //
 
-public protocol Coordinator: CoordinatorStack, CoordinatorRouter, Responder {
-
-    func start()
-}
+public typealias Coordinator = BaseCoordinator & CoordinatorStack & Startable

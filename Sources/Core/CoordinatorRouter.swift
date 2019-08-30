@@ -13,4 +13,6 @@ public protocol CoordinatorRouter: Presentable {
     var rootViewController: UIViewController? { get }
 
     var router: RouterType? { get set }
+    
+    func dismissModule(animated: Bool, completion: (() -> Void)?)
 }
