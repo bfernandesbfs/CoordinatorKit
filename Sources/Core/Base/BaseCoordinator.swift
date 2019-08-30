@@ -31,8 +31,7 @@ open class BaseCoordinator: CoordinatorRouter, Responder {
             if let router = parent?.router, router.isModalPresent {
                 parent?.router?.isModalPresent = false
                 parent?.router?.dismissModule(animated: animated, completion: completion)
-            }
-            else {
+            } else {
                 parent?.router?.popModule(animated: animated)
                 
                 if let completion = completion {
