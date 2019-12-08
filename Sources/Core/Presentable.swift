@@ -20,3 +20,11 @@ extension Presentable where Self: Coordinator {
     }
 
 }
+
+extension UIViewController: Presentable {
+
+    public var viewController: UIViewController {
+        return self
+    }
+
+}

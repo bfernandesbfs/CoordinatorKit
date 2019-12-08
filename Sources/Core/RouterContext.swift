@@ -64,7 +64,6 @@ public enum NavigationContext: RouterContext {
 
         switch self {
         case let .push(presentable, animated):
-
             rootViewController.pushViewController(presentable.viewController, animated: animated)
             perform(presentable)
         }
