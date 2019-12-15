@@ -1,8 +1,9 @@
-import Foundation
+import UIKit
 
 private struct CoordiantorKeys {
     static var stackKey: UInt8 = 1
     static var responderKey: UInt8 = 2
+    static var responderControllerKey: UInt8 = 3
 }
 
 public protocol AnyCoordinator: Presentable, Responder {}

@@ -7,7 +7,7 @@
 //
 
 public protocol Responder {
-    var nextResponder: AnyCoordinator? { get }
+    var nextResponder: AnyCoordinator? { get set }
 }
 
 public extension AnyCoordinator {

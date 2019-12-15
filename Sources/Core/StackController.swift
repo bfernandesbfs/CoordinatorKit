@@ -20,14 +20,16 @@ public class StackController {
     }
 
     public func push(_ element: Presentable) {
-        children.append(element)
-        root.registerParent(element)
+        if element is AnyCoordinator {
+            children.append(element)
+            root.registerParent(element)
+        }
     }
 
-    @discardableResult
-    public func pop() -> Presentable? {
-        let element = children.popLast()
-        return element
+    public func pop(_ element: Presentable) {
+        children.removeAll {
+            $0.canBeRemovedAsChild()
+        }
     }
 
     public func peek() -> Presentable? {

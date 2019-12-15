@@ -1,12 +1,14 @@
 import UIKit
 
+public typealias PerformHandler = () -> Void
+
 public protocol Coordinator: AnyCoordinator {
 
     associatedtype RootViewController: UIViewController
 
     var rootViewController: RootViewController { get }
 
-    func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PresentationHandler?) where Transition.RootViewController == RootViewController
+    func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PerformHandler?) where Transition.RootViewController == RootViewController
 
 }
 
@@ -16,19 +18,27 @@ extension Coordinator {
         return rootViewController
     }
 
-    public func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PresentationHandler? = nil) where Transition.RootViewController == RootViewController {
+    public func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PerformHandler? = nil) where Transition.RootViewController == RootViewController {
 
-        transition.perform(on: rootViewController) {
+        transition.perform(on: rootViewController, with: self) { finished in
 
-            transition.presentables.forEach(self._stack.push)
-
+            if finished {
+                self.removeChildrenIfNeeded()
+            } else {
+                transition.presentables.forEach(self._stack.push)
+            }
             completion?()
         }
 
     }
 
     public func registerParent(_ presentable: Presentable) {
-        var presentable = presentable
         presentable.nextResponder = self
+        presentable.viewController.nextResponder = (presentable as? AnyCoordinator)
+    }
+
+    public func removeChildrenIfNeeded() {
+        self.nextResponder?._stack.pop(self)
     }
 }
+

@@ -19,47 +19,64 @@ final class CoordinatorKitTests: XCTestCase {
         XCTAssertNotNil(sut)
     }
 
-    func testRouterAddCoordinatorAsChildIntoRootCoordinator() {
+//    func testRouterAddCoordinatorAsChildIntoRootCoordinator() {
+//
+//        let coordinator = HomeCoordinator()
+//        sut.router(Transition.push(coordinator))
+//
+//        XCTAssertEqual(sut._stack.children.count, 1)
+//        XCTAssertTrue(coordinator.nextResponder is AppCoordinator)
+//    }
 
-        let coordinator = HomeCoordinator()
-        sut.router(Transition.push(coordinator))
+//    func testSendActionForResponsibilityChainForItSelf() {
+//
+//        let coordinator = HomeCoordinator()
+//        sut.router(NavigationTransition.push(coordinator))
+//
+//        coordinator.tryToHandle(HomeEvent.next)
+//
+//        XCTAssertEqual(coordinator.action, HomeEvent.next)
+//        XCTAssertNil(sut.action)
+//
+//    }
 
-        XCTAssertEqual(sut._stack.children.count, 1)
-        XCTAssertTrue(coordinator.nextResponder is AppCoordinator)
-    }
+//    func testSendActionForChainCoordinator() {
+//
+//        let coordinator = HomeCoordinator()
+//        sut.router(NavigationTransition.push(coordinator))
+//
+//        coordinator.tryToHandle(AppEvent.next)
+//
+//        XCTAssertEqual(sut.action, AppEvent.next)
+//        XCTAssertNil(coordinator.action)
+//
+//    }
 
-    func testSendActionForResponsibilityChainForItSelf() {
+//    func testPresentCoordinator() {
+//
+//        let coordinatorA = HomeCoordinator()
+//        let coordinatorB = AppCoordinator()
+//
+//        coordinatorA.router(ViewTransition.present(coordinatorB))
+//
+//        XCTAssertEqual(coordinatorA._stack.children.count, 1)
+//        XCTAssertTrue(coordinatorB.nextResponder is HomeCoordinator)
+//    }
 
-        let coordinator = HomeCoordinator()
-        sut.router(NavigationTransition.push(coordinator))
+    func testDismissCoordinator() {
 
-        coordinator.tryToHandle(HomeEvent.next)
+        let coordinatorA = AppCoordinator()
+        let coordinatorB = HomeCoordinator()
 
-        XCTAssertEqual(coordinator.action, HomeEvent.next)
-        XCTAssertNil(sut.action)
+        let controller = UIViewController()
 
-    }
+        coordinatorA.router(NavigationTransition.push(controller))
 
-    func testSendActionForChainCoordinator() {
+        coordinatorA.router(NavigationTransition.present(coordinatorB))
 
-        let coordinator = HomeCoordinator()
-        sut.router(NavigationTransition.push(coordinator))
+        coordinatorB.router(ViewTransition.dismiss())
 
-        coordinator.tryToHandle(AppEvent.next)
+        coordinatorA.router(NavigationTransition.pop())
 
-        XCTAssertEqual(sut.action, AppEvent.next)
-        XCTAssertNil(coordinator.action)
-
-    }
-
-    func testPresentationCoordinator() {
-
-        let coordinatorA = HomeCoordinator()
-        let coordinatorB = AppCoordinator()
-
-        coordinatorA.router(ViewTransition.present(coordinatorB))
-
-        XCTAssertEqual(coordinatorA._stack.children.count, 1)
-        XCTAssertTrue(coordinatorB.nextResponder is HomeCoordinator)
     }
 }
