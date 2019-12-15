@@ -1,39 +1,34 @@
-//
-//  Coordinator.swift
-//  CoordinatorKit
-//
-//  Created by Bruno Fernandes on 9/15/18.
-//  Copyright © 2018 bfernandesbfs. All rights reserved.
-//
-
 import UIKit
 
-public protocol Coordinator: AnyCoordinator, Presentable {
+public protocol Coordinator: AnyCoordinator {
 
     associatedtype RootViewController: UIViewController
 
     var rootViewController: RootViewController { get }
 
-    func router<Context>(_ context: Context) where Context: RouterContext, RootViewController == Context.RootViewController
+    func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PresentationHandler?) where Transition.RootViewController == RootViewController
 
 }
 
 extension Coordinator {
 
-    public func router<Context>(_ context: Context) where Context: RouterContext, RootViewController == Context.RootViewController  {
-        context.perform(rootViewController: rootViewController) { presentable in
-            guard var coordinator = presentable as? AnyCoordinator else {
-                return
-            }
+    public var viewController: UIViewController! {
+        return rootViewController
+    }
 
-            if presentable.viewController !== self.rootViewController {
-                coordinator.parent = self
-                self._stack.push(coordinator)
-            } else if let parent = coordinator.parent {
-                parent._stack.pop()
-            }
+    public func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PresentationHandler? = nil) where Transition.RootViewController == RootViewController {
+
+        transition.perform(on: rootViewController) {
+
+            transition.presentables.forEach(self._stack.push)
+
+            completion?()
         }
+
+    }
+
+    public func registerParent(_ presentable: Presentable) {
+        var presentable = presentable
+        presentable.nextResponder = self
     }
 }
-
-

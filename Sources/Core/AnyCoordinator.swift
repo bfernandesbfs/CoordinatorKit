@@ -1,29 +1,24 @@
-//
-//  AnyCoordinator.swift
-//  CoordinatorKit
-//
-//  Created by Bruno Fernandes on 9/15/18.
-//  Copyright © 2018 bfernandesbfs. All rights reserved.
-//
+import Foundation
 
-private var childKey: UInt8 = 1
-private var responderKey: UInt8 = 2
+private struct CoordiantorKeys {
+    static var stackKey: UInt8 = 1
+    static var responderKey: UInt8 = 2
+}
 
-public protocol AnyCoordinator: Responder {}
+public protocol AnyCoordinator: Presentable, Responder {}
 
 extension AnyCoordinator {
 
-    var _stack: Stack {
-        return Stack(root: self)
+    internal var _stack: StackController {
+        get { return AssociatedObject.get(base: self, key: &CoordiantorKeys.stackKey) { return StackController(root: self) } }
+        set { AssociatedObject.set(base: self, key: &CoordiantorKeys.stackKey, value: newValue) }
     }
+}
 
-    var children: [AnyCoordinator] {
-        get { return AssociatedObject.get(base: self, key: &childKey) { return [] } }
-        set { AssociatedObject.set(base: self, key: &childKey, value: newValue) }
-    }
+extension Presentable {
 
-    public var parent: AnyCoordinator? {
-        get { return AssociatedObject.get(base: self, key: &responderKey) }
-        set { AssociatedObject.set(base: self, key: &responderKey, value: newValue) }
+    public var nextResponder: AnyCoordinator? {
+        get { return AssociatedObject.get(base: self, key: &CoordiantorKeys.responderKey) }
+        set { AssociatedObject.set(base: self, key: &CoordiantorKeys.responderKey, value: newValue) }
     }
 }

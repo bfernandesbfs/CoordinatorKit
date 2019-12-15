@@ -20,6 +20,8 @@ let package = Package(
             sources: ["Core"]),
         .testTarget(
             name: "CoordinatorKitTests",
-            dependencies: ["CoordinatorKit"]),
+            dependencies: ["CoordinatorKit"],
+            path: "Tests",
+            sources: ["Core"]),
     ]
 )

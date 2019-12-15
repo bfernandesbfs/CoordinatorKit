@@ -7,7 +7,7 @@
 //
 
 public protocol Responder {
-    var parent: AnyCoordinator? { get }
+    var nextResponder: AnyCoordinator? { get }
 }
 
 public extension AnyCoordinator {
@@ -17,15 +17,15 @@ public extension AnyCoordinator {
 }
 
 public extension Event {
-    func tryToSendTo(_ firstResponder: AnyCoordinator) {
+    func tryToSendTo(_ firstResponder: Responder) {
         guard let handler: Handler = findHandlerInChainStartingWith(firstResponder) else {
             fatalError("declared event \(self) was not found in the chained structure")
         }
         sendToHandler(handler)
     }
 
-    private func findHandlerInChainStartingWith<Handler>(_ firstResponder: AnyCoordinator) -> Handler? {
-        var nextResponder: AnyCoordinator? = firstResponder
+    private func findHandlerInChainStartingWith<Handler>(_ firstResponder: Responder) -> Handler? {
+        var nextResponder: Responder? = firstResponder
         while let responder = nextResponder {
             if let handler = responder as? Handler {
                 return handler
@@ -33,7 +33,7 @@ public extension Event {
             #if DEBUG
                 print("\(responder) cannot handle the message")
             #endif
-            nextResponder = responder.parent
+            nextResponder = responder.nextResponder
         }
         return nil
     }

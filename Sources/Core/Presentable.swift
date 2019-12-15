@@ -8,23 +8,47 @@
 
 import UIKit
 
-public protocol Presentable {
+public typealias PresentationHandler = () -> Void
 
-    var viewController: UIViewController { get }
+public protocol TransitionContext {
+
+    var presentables: [Presentable] { get }
+    
 }
 
-extension Presentable where Self: Coordinator {
+public protocol TransitionProtocol: TransitionContext {
 
-    public var viewController: UIViewController {
-        return rootViewController
-    }
+    associatedtype RootViewController: UIViewController
+
+    func perform(on rootViewController: RootViewController, completion: PresentationHandler?)
+}
+
+public protocol Presentable {
+
+    var viewController: UIViewController! { get }
+
+    func registerParent(_ presentable: Presentable)
+
+}
+
+extension Presentable {
+
+    public func registerParent(_ presentable: Presentable) {}
 
 }
 
 extension UIViewController: Presentable {
 
-    public var viewController: UIViewController {
+    public var viewController: UIViewController! {
         return self
     }
 
+    public func perform<EventType: Event>(action: EventType) {
+
+        guard let responder = nextResponder?._stack.peek() as? AnyCoordinator else {
+            fatalError("\(self) does not have an associated match in chain structure")
+        }
+
+        responder.tryToHandle(action)
+    }
 }
