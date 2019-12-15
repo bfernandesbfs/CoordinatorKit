@@ -4,21 +4,39 @@ public typealias ViewTransition = Transition<UIViewController>
 
 extension Transition {
 
-    public static func present(_ presentable: Presentable, animation: Bool = true) -> Transition {
+    public static func show(_ presentable: Presentable, animation: Bool = true) -> Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
-            rootViewController.topPresentedViewController.present(presentable.viewController, animated: animation) {
+            rootViewController.show(presentable.viewController, animated: animation) {
                 completion?(false)
             }
         }
     }
 
-    public static func dismiss(root: Bool = false, animation: Bool = true) -> Transition {
+    public static func showDetail(_ presentable: Presentable, animation: Bool = true) -> Transition {
+        return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
+            presentable.viewController.nextResponder = coordinator
+            rootViewController.showDetail(presentable.viewController, animated: animation) {
+                completion?(false)
+            }
+        }
+    }
+
+    public static func present(onRoot: Bool = false, _ presentable: Presentable, animation: Bool = true) -> Transition {
+        return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
+            presentable.viewController.nextResponder = coordinator
+            rootViewController.present(onRoot: onRoot, presentable.viewController, animated: animation) {
+                completion?(false)
+            }
+        }
+    }
+
+    public static func dismiss(toRoot: Bool = false, animation: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
-            let dismissalViewController = root ? rootViewController : rootViewController.topPresentedViewController
-            dismissalViewController.dismiss(animated: animation) {
+            rootViewController.dismiss(toRoot: toRoot, animated: animation) {
                 completion?(true)
             }
         }
     }
 }
+

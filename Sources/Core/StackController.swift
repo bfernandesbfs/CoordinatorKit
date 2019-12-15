@@ -1,11 +1,3 @@
-//
-//  Stack.swift
-//  CoordinatorKit
-//
-//  Created by Bruno Fernandes on 9/15/18.
-//  Copyright © 2018 bfernandesbfs. All rights reserved.
-//
-
 import Foundation
 
 public class StackController {
