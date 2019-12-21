@@ -50,6 +50,10 @@ extension UIViewController: Presentable {
         return presentedViewController?.topPresentedViewController ?? self
     }
 
+    internal var firstPresentingViewController: UIViewController {
+        return presentingViewController?.firstPresentingViewController ?? self
+    }
+
     public var viewController: UIViewController! {
         return self
     }

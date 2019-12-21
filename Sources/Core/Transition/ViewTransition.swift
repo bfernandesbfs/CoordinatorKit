@@ -38,5 +38,13 @@ extension Transition {
             }
         }
     }
+
+    public static func back(animation: Bool = true) -> Transition {
+        return Transition(presentables: []) { rootViewController, coordinator, completion in
+            rootViewController.back(animated: animation) {
+                completion?(true)
+            }
+        }
+    }
 }
 

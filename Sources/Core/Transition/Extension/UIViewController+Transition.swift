@@ -41,4 +41,9 @@ extension UIViewController {
         let dismissalViewController = toRoot ? self : presentedViewController
         dismissalViewController.dismiss(animated: animated, completion: completion)
     }
+
+    func back(animated: Bool, completion: PerformHandler?) {
+        firstPresentingViewController.dismiss(animated: animated, completion: completion)
+    }
+
 }
