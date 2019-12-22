@@ -1,6 +1,6 @@
 import UIKit
 
-public typealias PresentationHandler = (_ finished: Bool) -> Void
+public typealias PresentationHandler = (_ type: TransitionType) -> Void
 
 public protocol TransitionProtocol {
 
@@ -9,6 +9,10 @@ public protocol TransitionProtocol {
     var presentables: [Presentable] { get }
 
     func perform(on rootViewController: RootViewController, with coordinator: AnyCoordinator, completion: PresentationHandler?)
+}
+
+public enum TransitionType {
+    case show, dismiss, parent
 }
 
 public struct Transition<RootViewController: UIViewController>: TransitionProtocol {

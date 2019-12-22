@@ -9,20 +9,6 @@ extension UINavigationController {
         }, completion: completion)
     }
 
-    func pop(toRoot: Bool, animated: Bool, completion: PerformHandler?) {
-
-        beginTransition(invoking: {
-
-            if toRoot {
-                popToRootViewController(animated: animated)
-            } else {
-                popViewController(animated: animated)
-            }
-
-        }, completion: completion)
-
-    }
-
     func set(_ viewControllers: [UIViewController], animated: Bool, completion: PerformHandler?) {
 
         beginTransition(invoking: {
@@ -30,10 +16,31 @@ extension UINavigationController {
         }, completion: completion)
     }
 
-    func pop(to viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
+    func pop(toRoot: Bool, animated: Bool, completion: PerformHandler?) -> [UIViewController]? {
+
+        var controllers: [UIViewController]? = []
 
         beginTransition(invoking: {
-            _ = popToViewController(viewController, animated: animated)
+
+            if toRoot {
+                controllers = popToRootViewController(animated: animated)
+            } else if let controller = popViewController(animated: animated) {
+                controllers = [controller]
+            }
+
         }, completion: completion)
+
+        return controllers
+    }
+
+    func pop(to viewController: UIViewController, animated: Bool, completion: PerformHandler?) -> [UIViewController]? {
+
+        var controllers: [UIViewController]? = []
+
+        beginTransition(invoking: {
+            controllers = popToViewController(viewController, animated: animated)
+        }, completion: completion)
+
+        return controllers
     }
 }

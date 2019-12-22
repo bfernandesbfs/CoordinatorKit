@@ -8,7 +8,7 @@ extension Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
             rootViewController.show(presentable.viewController, animated: animation) {
-                completion?(false)
+                completion?(.show)
             }
         }
     }
@@ -17,7 +17,7 @@ extension Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
             rootViewController.showDetail(presentable.viewController, animated: animation) {
-                completion?(false)
+                completion?(.show)
             }
         }
     }
@@ -26,7 +26,7 @@ extension Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
             rootViewController.present(onRoot: onRoot, presentable.viewController, animated: animation) {
-                completion?(false)
+                completion?(.show)
             }
         }
     }
@@ -34,7 +34,7 @@ extension Transition {
     public static func dismiss(toRoot: Bool = false, animation: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
             rootViewController.dismiss(toRoot: toRoot, animated: animation) {
-                completion?(true)
+                completion?(.dismiss)
             }
         }
     }
@@ -42,7 +42,7 @@ extension Transition {
     public static func back(animation: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
             rootViewController.back(animated: animation) {
-                completion?(true)
+                completion?(.dismiss)
             }
         }
     }

@@ -19,6 +19,11 @@ public class StackController {
     }
 
     public func pop(_ element: Presentable) {
+        children.removeAll { $0 === element }
+
+    }
+
+    public func popIfNeed() {
         children.removeAll {
             $0.canBeRemovedAsChild()
         }

@@ -9,7 +9,7 @@ extension Transition where RootViewController: UINavigationController {
             presentable.viewController.nextResponder = coordinator
             
             rootViewController.push(presentable.viewController, animated: animated) {
-                completion?(false)
+                completion?(.show)
             }
         }
     }
@@ -26,23 +26,42 @@ extension Transition where RootViewController: UINavigationController {
             })
 
             rootViewController.set(controllers, animated: animated) {
-                completion?(false)
+                completion?(.show)
             }
         }
     }
 
     public static func pop(toRoot: Bool = false, animated: Bool = true) -> Transition {
-        return Transition(presentables: []) { rootViewController, _, completion in
-            rootViewController.pop(toRoot: toRoot, animated: animated) {
-                completion?(true)
+        return Transition(presentables: []) { rootViewController, coordinator, completion in
+
+            var controllers: [UIViewController]? = []
+            controllers = rootViewController.pop(toRoot: toRoot, animated: animated) {
+
+                var type: TransitionType = .dismiss
+                if let child = coordinator as? ChildCoordinator,
+                    let controllers = controllers,
+                    (controllers.contains { $0 == child.childViewController }) {
+                    type = .parent
+                }
+                completion?(type)
             }
+
         }
     }
 
     public static func popToController(_ presentable: Presentable, animated: Bool = true) -> Transition {
-        return Transition(presentables: []) { rootViewController, _, completion in
-            rootViewController.pop(to: presentable.viewController, animated: animated) {
-                completion?(true)
+        return Transition(presentables: []) { rootViewController, coordinator, completion in
+
+            var controllers: [UIViewController]? = []
+            controllers = rootViewController.pop(to: presentable.viewController, animated: animated) {
+
+                var type: TransitionType = .dismiss
+                if let child = coordinator as? ChildCoordinator,
+                    let controllers = controllers,
+                    (controllers.contains { $0 == child.childViewController }) {
+                    type = .parent
+                }
+                completion?(type)
             }
         }
     }
