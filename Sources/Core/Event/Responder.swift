@@ -2,14 +2,14 @@ public protocol Responder {
     var nextResponder: AnyCoordinator? { get set }
 }
 
-public extension AnyCoordinator {
+internal extension AnyCoordinator {
     func tryToHandle<EventType: Event>(_ message: EventType) {
         message.tryToSendTo(self)
     }
 }
 
 public extension Event {
-    func tryToSendTo(_ firstResponder: Responder) {
+    internal func tryToSendTo(_ firstResponder: Responder) {
         guard let handler: Handler = findHandlerInChainStartingWith(firstResponder) else {
             fatalError("declared event \(self) was not found in the chained structure")
         }

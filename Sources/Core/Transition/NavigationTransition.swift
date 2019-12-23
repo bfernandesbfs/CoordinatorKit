@@ -34,18 +34,10 @@ extension Transition where RootViewController: UINavigationController {
     public static func pop(toRoot: Bool = false, animated: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
 
-            var controllers: [UIViewController]? = []
+            var controllers: [UIViewController]?
             controllers = rootViewController.pop(toRoot: toRoot, animated: animated) {
-
-                var type: TransitionType = .dismiss
-                if let child = coordinator as? ChildCoordinator,
-                    let controllers = controllers,
-                    (controllers.contains { $0 == child.childViewController }) {
-                    type = .parent
-                }
-                completion?(type)
+                completion?(.dismiss(controllers))
             }
-
         }
     }
 
@@ -54,14 +46,7 @@ extension Transition where RootViewController: UINavigationController {
 
             var controllers: [UIViewController]? = []
             controllers = rootViewController.pop(to: presentable.viewController, animated: animated) {
-
-                var type: TransitionType = .dismiss
-                if let child = coordinator as? ChildCoordinator,
-                    let controllers = controllers,
-                    (controllers.contains { $0 == child.childViewController }) {
-                    type = .parent
-                }
-                completion?(type)
+                completion?(.dismiss(controllers))
             }
         }
     }

@@ -11,13 +11,15 @@ public protocol TransitionProtocol {
     func perform(on rootViewController: RootViewController, with coordinator: AnyCoordinator, completion: PresentationHandler?)
 }
 
+
+
 public enum TransitionType {
-    case show, dismiss, parent
+    case show, dismiss([Presentable]?)
 }
 
 public struct Transition<RootViewController: UIViewController>: TransitionProtocol {
 
-    public typealias PerformClosure = (
+    internal typealias PerformClosure = (
         _ rootViewController: RootViewController,
         _ coordinator: AnyCoordinator,
         _ completion: PresentationHandler?) -> Void
@@ -29,7 +31,7 @@ public struct Transition<RootViewController: UIViewController>: TransitionProtoc
         return _presentables
     }
 
-    public init(presentables: [Presentable], perform: @escaping PerformClosure) {
+    internal init(presentables: [Presentable], perform: @escaping PerformClosure) {
         self._presentables = presentables
         self._perform = perform
     }

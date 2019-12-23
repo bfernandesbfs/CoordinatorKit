@@ -1,6 +1,6 @@
 import Foundation
 
-public class StackController {
+internal final class StackController {
 
     private var root: Presentable
 
@@ -11,25 +11,31 @@ public class StackController {
         self.children = []
     }
 
-    public func push(_ element: Presentable) {
+    internal func push(_ element: Presentable) {
         if element is AnyCoordinator {
             children.append(element)
             root.registerParent(element)
         }
     }
 
-    public func pop(_ element: Presentable) {
-        children.removeAll { $0 === element }
+    internal func pop(_ elements: [Presentable]?) {
 
-    }
+        children.removeAll { child in
 
-    public func popIfNeed() {
-        children.removeAll {
-            $0.canBeRemovedAsChild()
+            if child is SharedCoordinator, let elements = elements, (elements.contains { $0 === child.viewController }) {
+
+                if root is SharedCoordinator {
+                    root.nextResponder?._stack.pop(elements)
+                }
+                
+                return true
+            }
+
+            return child.canBeRemovedAsChild()
         }
     }
 
-    public func peek() -> Presentable? {
+    internal func peek() -> Presentable? {
         return children.last
     }
 }

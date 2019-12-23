@@ -10,6 +10,9 @@ public protocol Coordinator: AnyCoordinator {
 
     func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PerformHandler?) where Transition.RootViewController == RootViewController
 
+    func registerShared(_ coordinator: AnyCoordinator)
+
+    func sendToNext<EventType: Event>(event: EventType)
 }
 
 extension Coordinator {
@@ -25,10 +28,8 @@ extension Coordinator {
             switch type {
             case .show:
                 transition.presentables.forEach(self._stack.push)
-            case .dismiss:
-                self.removeChildren(isSameRoot: false)
-            case .parent:
-                self.removeChildren(isSameRoot: true)
+            case .dismiss(let presentables):
+                self.removeChildrenIfNeeded(presentables)
             }
 
             completion?()
@@ -36,8 +37,8 @@ extension Coordinator {
 
     }
 
-    public func registerChildren(_ coordinator: AnyCoordinator) {
-        self._stack.push(coordinator)
+    public func registerShared(_ coordinator: AnyCoordinator) {
+        _stack.push(coordinator)
     }
 
     public func registerParent(_ presentable: Presentable) {
@@ -45,17 +46,11 @@ extension Coordinator {
         presentable.viewController.nextResponder = (presentable as? AnyCoordinator)
     }
 
-    private func removeChildren(isSameRoot: Bool) {
-        if isSameRoot {
-            self.nextResponder?._stack.pop(self)
-        } else {
-            self.nextResponder?._stack.popIfNeed()
-        }
+    public func sendToNext<EventType: Event>(event: EventType) {
+        nextResponder?.tryToHandle(event)
     }
-}
 
-public protocol ChildCoordinator: Presentable {
-
-    var childViewController: UIViewController { get }
-    
+    private func removeChildrenIfNeeded(_ presentables: [Presentable]?) {
+        nextResponder?._stack.pop(presentables)
+    }
 }

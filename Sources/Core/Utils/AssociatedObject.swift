@@ -1,6 +1,6 @@
 import Foundation
 
-public struct AssociatedObject {
+internal struct AssociatedObject {
 
     static func get<T: Any>(base: Any, key: UnsafePointer<UInt8>, initializer: () -> T) -> T {
         if let v = objc_getAssociatedObject(base, key) as? T {

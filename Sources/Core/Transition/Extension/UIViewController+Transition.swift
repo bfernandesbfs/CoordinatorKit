@@ -15,34 +15,34 @@ extension UIViewController {
 
     }
 
-    func show(_ viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
+    internal func show(_ viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
 
         beginTransition(invoking: {
             show(viewController, sender: nil)
         }, completion: completion)
     }
 
-    func showDetail(_ viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
+    internal func showDetail(_ viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
 
         beginTransition(invoking: {
             showDetailViewController(viewController, sender: nil)
         }, completion: completion)
     }
 
-    func present(onRoot: Bool, _ viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
+    internal func present(onRoot: Bool, _ viewController: UIViewController, animated: Bool, completion: PerformHandler?) {
 
         let presentingViewController = onRoot ? self : topPresentedViewController
         presentingViewController.present(viewController, animated: animated, completion: completion)
     }
 
-    func dismiss(toRoot: Bool, animated: Bool, completion: PerformHandler?) {
+    internal func dismiss(toRoot: Bool, animated: Bool, completion: PerformHandler?) {
         
         let presentedViewController = topPresentedViewController
         let dismissalViewController = toRoot ? self : presentedViewController
         dismissalViewController.dismiss(animated: animated, completion: completion)
     }
 
-    func back(animated: Bool, completion: PerformHandler?) {
+    internal func back(animated: Bool, completion: PerformHandler?) {
         firstPresentingViewController.dismiss(animated: animated, completion: completion)
     }
 

@@ -34,7 +34,7 @@ extension Transition {
     public static func dismiss(toRoot: Bool = false, animation: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
             rootViewController.dismiss(toRoot: toRoot, animated: animation) {
-                completion?(.dismiss)
+                completion?(.dismiss(nil))
             }
         }
     }
@@ -42,7 +42,7 @@ extension Transition {
     public static func back(animation: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
             rootViewController.back(animated: animation) {
-                completion?(.dismiss)
+                completion?(.dismiss(nil))
             }
         }
     }
