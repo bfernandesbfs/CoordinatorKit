@@ -33,9 +33,13 @@ internal final class StackController {
 
             return child.canBeRemovedAsChild()
         }
+
+        print(" - \(root)")
+        print(" |---- \(children.compactMap { "\($0)" }.joined(separator: "\n"))\n")
     }
 
     internal func peek() -> Presentable? {
         return children.last
     }
+
 }

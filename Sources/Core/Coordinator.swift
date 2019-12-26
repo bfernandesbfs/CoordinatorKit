@@ -23,16 +23,10 @@ extension Coordinator {
 
     public func router<Transition: TransitionProtocol>(_ transition: Transition, completion: PerformHandler? = nil) where Transition.RootViewController == RootViewController {
 
-        transition.perform(on: rootViewController, with: self) { type in
-
-            switch type {
-            case .show:
-                transition.presentables.forEach(self._stack.push)
-            case .dismiss(let presentables):
-                self.removeChildrenIfNeeded(presentables)
-            }
-
+        transition.presentables.forEach(self._stack.push)
+        transition.perform(on: rootViewController, with: self) { presentables in
             completion?()
+            self.removeChildrenIfNeeded(presentables)
         }
 
     }

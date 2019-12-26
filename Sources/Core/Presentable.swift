@@ -28,7 +28,6 @@ extension Presentable {
     public func setRoot(for window: UIWindow) {
         window.rootViewController = viewController
         window.makeKeyAndVisible()
-    
     }
 
 }

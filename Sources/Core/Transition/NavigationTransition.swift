@@ -9,7 +9,7 @@ extension Transition where RootViewController: UINavigationController {
             presentable.viewController.nextResponder = coordinator
             
             rootViewController.push(presentable.viewController, animated: animated) {
-                completion?(.show)
+                completion?(nil)
             }
         }
     }
@@ -26,7 +26,7 @@ extension Transition where RootViewController: UINavigationController {
             })
 
             rootViewController.set(controllers, animated: animated) {
-                completion?(.show)
+                completion?(nil)
             }
         }
     }
@@ -36,7 +36,7 @@ extension Transition where RootViewController: UINavigationController {
 
             var controllers: [UIViewController]?
             controllers = rootViewController.pop(toRoot: toRoot, animated: animated) {
-                completion?(.dismiss(controllers))
+                completion?(controllers)
             }
         }
     }
@@ -46,7 +46,7 @@ extension Transition where RootViewController: UINavigationController {
 
             var controllers: [UIViewController]? = []
             controllers = rootViewController.pop(to: presentable.viewController, animated: animated) {
-                completion?(.dismiss(controllers))
+                completion?(controllers)
             }
         }
     }

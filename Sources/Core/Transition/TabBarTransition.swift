@@ -17,7 +17,7 @@ extension Transition where RootViewController: UITabBarController {
             })
 
             rootViewController.set(controllers, animated: animated) {
-                completion?(.show)
+                completion?(nil)
             }
         }
     }
