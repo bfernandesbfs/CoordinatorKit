@@ -2,7 +2,7 @@ import UIKit
 
 public typealias NavigationTransition = Transition<UINavigationController>
 
-extension Transition where RootViewController: UINavigationController {
+extension Transition where RootViewController: UINavigationController  {
 
     public static func push(_ presentable: Presentable, animated: Bool = true) -> Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in

@@ -4,44 +4,44 @@ public typealias ViewTransition = Transition<UIViewController>
 
 extension Transition {
 
-    public static func show(_ presentable: Presentable, animation: Bool = true) -> Transition {
+    public static func show(_ presentable: Presentable, animated: Bool = true) -> Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
-            rootViewController.show(presentable.viewController, animated: animation) {
+            rootViewController.show(presentable.viewController, animated: animated) {
                 completion?(nil)
             }
         }
     }
 
-    public static func showDetail(_ presentable: Presentable, animation: Bool = true) -> Transition {
+    public static func showDetail(_ presentable: Presentable, animated: Bool = true) -> Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
-            rootViewController.showDetail(presentable.viewController, animated: animation) {
+            rootViewController.showDetail(presentable.viewController, animated: animated) {
                 completion?(nil)
             }
         }
     }
 
-    public static func present(onRoot: Bool = false, _ presentable: Presentable, animation: Bool = true) -> Transition {
+    public static func present(onRoot: Bool = false, _ presentable: Presentable, animated: Bool = true) -> Transition {
         return Transition(presentables: [presentable]) { rootViewController, coordinator, completion in
             presentable.viewController.nextResponder = coordinator
-            rootViewController.present(onRoot: onRoot, presentable.viewController, animated: animation) {
+            rootViewController.present(onRoot: onRoot, presentable.viewController, animated: animated) {
                 completion?(nil)
             }
         }
     }
 
-    public static func dismiss(toRoot: Bool = false, animation: Bool = true) -> Transition {
+    public static func dismiss(toRoot: Bool = false, animated: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
-            rootViewController.dismiss(toRoot: toRoot, animated: animation) {
+            rootViewController.dismiss(toRoot: toRoot, animated: animated) {
                 completion?(nil)
             }
         }
     }
 
-    public static func back(animation: Bool = true) -> Transition {
+    public static func back(animated: Bool = true) -> Transition {
         return Transition(presentables: []) { rootViewController, coordinator, completion in
-            rootViewController.back(animated: animation) {
+            rootViewController.back(animated: animated) {
                 completion?(nil)
             }
         }

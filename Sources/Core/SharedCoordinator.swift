@@ -1,11 +1,18 @@
 import UIKit
 
-public protocol SharedCoordinator {
+public protocol SharedRootProtocol {}
 
-    var initialViewController: UIViewController { get }
+public protocol SharedCoordinator: Coordinator, SharedRootProtocol {
+
+    associatedtype InitialViewController: UIViewController
+
+    var initialViewController: InitialViewController { get }
+
+    //init(rootViewController: RootViewController)
+
 }
 
-extension SharedCoordinator where Self: Coordinator {
+extension SharedCoordinator {
 
     public var viewController: UIViewController! {
         return initialViewController
