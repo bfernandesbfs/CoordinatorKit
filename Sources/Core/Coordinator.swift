@@ -8,24 +8,29 @@ public protocol Coordinator: AnyCoordinator {
 
     var rootViewController: RootViewController { get }
 
-    func router<Transition: TransitionProtocol>(_ transition: Transition, callback completion: PerformHandler?) where Transition.RootViewController == RootViewController
+    func router<Transition>(_ transition: Transition, callback completion: PerformHandler?) where Transition: TransitionProtocol, Transition.RootViewController == RootViewController
 
-    func router<Transition: TransitionProtocol>(_ transition: Transition, target coordinator: AnyCoordinator, callback completion: PerformHandler?) where Transition.RootViewController == RootViewController
+    func router<Transition>(_ transition: Transition, target coordinator: AnyCoordinator, callback completion: PerformHandler?) where Transition: TransitionProtocol, Transition.RootViewController == RootViewController
 
     func sendToNext<EventType: Event>(event: EventType)
 }
 
 extension Coordinator {
 
+    // MARK: Public Property
+
     public var viewController: UIViewController! {
         return rootViewController
     }
 
-    public func router<Transition: TransitionProtocol>(_ transition: Transition, callback completion: PerformHandler? = nil) where Transition.RootViewController == RootViewController {
+    // MARK: Public Methods
+
+    public func router<Transition>(_ transition: Transition, callback completion: PerformHandler? = nil)
+        where Transition: TransitionProtocol, Transition.RootViewController == RootViewController {
         router(transition, target: self, callback: completion)
     }
 
-    public func router<Transition: TransitionProtocol>(_ transition: Transition, target coordinator: AnyCoordinator, callback completion: PerformHandler? = nil) where Transition.RootViewController == RootViewController {
+    public func router<Transition>(_ transition: Transition, target coordinator: AnyCoordinator, callback completion: PerformHandler? = nil) where Transition: TransitionProtocol, Transition.RootViewController == RootViewController {
 
         transition.presentables.forEach(self._stack.push)
         transition.perform(on: rootViewController, with: coordinator) { presentables in
@@ -43,6 +48,8 @@ extension Coordinator {
     public func sendToNext<EventType: Event>(event: EventType) {
         nextResponder?.tryToHandle(event)
     }
+
+    // MARK: Private Methods
 
     private func removeChildrenIfNeeded(_ presentables: [Presentable]?) {
         nextResponder?._stack.pop(presentables)
