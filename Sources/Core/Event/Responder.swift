@@ -1,23 +1,15 @@
-//
-//  Responder.swift
-//  CoordinatorKit-iOS
-//
-//  Created by Bruno Fernandes on 9/15/18.
-//  Copyright © 2018 bfernandesbfs. All rights reserved.
-//
-
 public protocol Responder {
-    var nextResponder: Responder? { get }
+    var nextResponder: AnyCoordinator? { get set }
 }
 
-public extension Responder {
+internal extension AnyCoordinator {
     func tryToHandle<EventType: Event>(_ message: EventType) {
         message.tryToSendTo(self)
     }
 }
 
 public extension Event {
-    func tryToSendTo(_ firstResponder: Responder) {
+    internal func tryToSendTo(_ firstResponder: Responder) {
         guard let handler: Handler = findHandlerInChainStartingWith(firstResponder) else {
             fatalError("declared event \(self) was not found in the chained structure")
         }

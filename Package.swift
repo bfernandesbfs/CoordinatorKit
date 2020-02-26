@@ -1,30 +1,27 @@
-// swift-tools-version:4.1
-//
-//  CoordinatorKit.swift
-//  CoordinatorKit
-//
-//  Created by Bruno Fernandes on 23/10/15.
-//  Copyright © 2017 bfernandesbfs. All rights reserved.
-//
+// swift-tools-version:5.1
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "CoordinatorKit",
+    platforms: [
+        .iOS(.v11)
+    ],
     products: [
         .library(
             name: "CoordinatorKit",
             targets: ["CoordinatorKit"]),
-        ],
-    dependencies: [],
+    ],
     targets: [
         .target(
             name: "CoordinatorKit",
-            dependencies: [],
-            path: "Sources"),
+            path: "Sources",
+            sources: ["Core"]),
         .testTarget(
             name: "CoordinatorKitTests",
             dependencies: ["CoordinatorKit"],
-            path: "Tests")
+            path: "Tests",
+            sources: ["Core"]),
     ]
 )
