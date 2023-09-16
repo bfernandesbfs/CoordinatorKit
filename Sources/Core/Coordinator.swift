@@ -48,6 +48,10 @@ extension Coordinator {
     public func sendToNext<EventType: Event>(event: EventType) {
         nextResponder?.tryToHandle(event)
     }
+    
+    public func contains(_ coordinator: AnyCoordinator.Type) -> Bool {
+        return _stack.children.contains { type(of: $0) == coordinator }
+    }
 
     // MARK: Private Methods
 
