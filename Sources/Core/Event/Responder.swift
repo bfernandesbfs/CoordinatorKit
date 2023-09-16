@@ -11,7 +11,7 @@ internal extension AnyCoordinator {
 public extension Event {
     internal func tryToSendTo(_ firstResponder: Responder) {
         guard let handler: Handler = findHandlerInChainStartingWith(firstResponder) else {
-            fatalError("declared event \(self) was not found in the chained structure")
+            fatalError("declared event `\(self)` was not found in the chained structure with start to `\(firstResponder)`")
         }
         sendToHandler(handler)
     }

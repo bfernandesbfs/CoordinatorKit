@@ -14,6 +14,15 @@ extension AnyCoordinator {
         get { return AssociatedObject.get(base: self, key: &CoordiantorKeys.stackKey) { return StackController(root: self) } }
         set { AssociatedObject.set(base: self, key: &CoordiantorKeys.stackKey, value: newValue) }
     }
+    
+}
+
+extension AnyCoordinator {
+    
+    public var childrenCount: Int {
+        return _stack.count
+    }
+    
 }
 
 extension Presentable {

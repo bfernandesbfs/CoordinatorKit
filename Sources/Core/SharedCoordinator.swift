@@ -8,8 +8,6 @@ public protocol SharedCoordinator: Coordinator, SharedRootProtocol {
 
     var initialViewController: InitialViewController { get }
 
-    init(rootViewController: RootViewController)
-
 }
 
 extension SharedCoordinator {
